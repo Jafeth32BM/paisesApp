@@ -4,15 +4,18 @@ import { Observable, of } from 'rxjs';
 import { Country } from '../interfaces/pais.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PaisService {
-  private _apriUrtl: string="https://restcountries.eu/rest/v2";
+  private _apriUrtl: string = 'https://restcountries.eu/rest/v2';
 
   constructor(private http: HttpClient) {}
-    buscarPais(termino: string): Observable<Country[]>{
-      const url = `${this._apriUrtl}/name/${termino}`;
-      return this.http.get<Country[]>(url);
-    }
-
+  buscarPais(termino: string): Observable<Country[]> {
+    const url = `${this._apriUrtl}/name/${termino}`;
+    return this.http.get<Country[]>(url);
+  }
+  buscarCapital(termino: string): Observable<Country[]> {
+    const url = `${this._apriUrtl}/capital/${termino}`;
+    return this.http.get<Country[]>(url);
+  }
 }
